@@ -16,3 +16,7 @@ function getTopCountry() {
   xhttp.open("GET", "https://api.ripostory.com/air/gate/top-country", true);
   xhttp.send();
 }
+
+function getTopCities(cityCount, isIncoming) {
+  //TODO implement
+}
