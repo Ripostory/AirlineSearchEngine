@@ -55,8 +55,62 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">test1</div>
-          <div class="tab-pane fade" id="nav-aggregation" role="tabpanel" aria-labelledby="nav-aggregation-tab">test2</div>
+
+          <div class="tab-pane fade" id="nav-aggregation" role="tabpanel" aria-labelledby="nav-aggregation-tab">
+            <h2>Top Country by Airport Count</h2>
+
+            <!-- TODO make this change using ajax calls -->
+            <h1 class="display-4">United States</h1>
+
+            <h2>Top Cities by Airline Activity</h2>
+            <form>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInput">City Count</label>
+                  <input type="number" class="form-control mb-2" id="inlineFormInput" placeholder="City Count">
+                </div>
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInput">Sort By</label>
+                  <select id="inputState" class="form-control mb-2">
+                    <option selected>Incoming</option>
+                    <option>Outgoing</option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-2">Update</button>
+                </div>
+              </div>
+            </form>
+
+            <!-- TODO Update this table using ajax calls -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Country/Territory</th>
+                  <th scope="col">Incoming</th>
+                  <th scope="col">Outgoing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>United States</td>
+                  <td>1232</td>
+                  <td>2234</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Japan</td>
+                  <td>556</td>
+                  <td>5442</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <div class="tab-pane fade" id="nav-recommendation" role="tabpanel" aria-labelledby="nav-recommendation-tab">test3</div>
+
         </div>
         <hr>
       </div>
