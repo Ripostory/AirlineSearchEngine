@@ -68,21 +68,21 @@
             <h1 id="gate-country" class="display-4 text-center">Loading...</h1>
 
             <h2 class="top-spacer">Top Cities by Airline Activity</h2>
-            <form>
+            <form id="form-topcity">
               <div class="form-row align-items-center">
                 <div class="col-auto">
                   <label class="sr-only" for="inlineFormInput">City Count</label>
-                  <input type="number" class="form-control mb-2" id="inlineFormInput" placeholder="City Count">
+                  <input type="number" class="form-control mb-2" name="count" placeholder="City Count">
                 </div>
                 <div class="col-auto">
                   <label class="sr-only" for="inlineFormInput">Sort By</label>
-                  <select id="inputState" class="form-control mb-2">
-                    <option selected>Incoming</option>
-                    <option>Outgoing</option>
+                  <select name="sort" class="form-control mb-2">
+                    <option value="in" selected>Incoming</option>
+                    <option value="out">Outgoing</option>
                   </select>
                 </div>
                 <div class="col-auto">
-                  <button type="submit" class="btn btn-primary mb-2">Update</button>
+                  <button class="btn btn-primary mb-2" type="button" onclick="getTopCities()">Update</button>
                 </div>
               </div>
             </form>
@@ -97,19 +97,7 @@
                   <th scope="col">Outgoing</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>United States</td>
-                  <td>1232</td>
-                  <td>2234</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Japan</td>
-                  <td>556</td>
-                  <td>5442</td>
-                </tr>
+              <tbody id="table-topcity">
               </tbody>
             </table>
           </div>
