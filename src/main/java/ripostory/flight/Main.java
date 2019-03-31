@@ -20,7 +20,7 @@ public class Main {
  
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 		
-		List<String> airports = new Aggregation(context).highestAirportCount();
+		String airports = new Aggregation(context).highestAirportCount();
 		System.out.println(airports);
 		
 		context.close();

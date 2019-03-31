@@ -25,12 +25,12 @@ public class Aggregation {
 		context = con;
 	}
 	
-	public List<String> highestAirportCount() {
+	public String highestAirportCount() {
 		//retrieve airport data
 		JavaRDD<String> rawAirData = new Data(context).retrieveData(DataType.airport);
 		
 		//Perform map reduce
-		JavaPairRDD<String, Integer> counts = rawAirData
+		Tuple2<String, Integer> counts = rawAirData
 				
 				//Split lines
                 .flatMap(s -> Arrays.asList(s.split("\\r?\\n")).iterator())
@@ -39,17 +39,12 @@ public class Aggregation {
                 .mapToPair(line -> new Tuple2<>(parseCountry(line), 1))
                 
                 //Add each tuple to get final count
-                .reduceByKey((a, b) -> a + b);
+                .reduceByKey((a, b) -> a + b)
+                
+                //Find max
+                .reduce((c1, c2) -> {if (c1._2 < c2._2) return c2; else return c1;});
 		
-		//create list
-		//TODO finish highest airport count
-		
-		counts.collect();
-		List<String> finalList = new ArrayList<String>();
-		//counts.foreach(city -> finalList.add(city._1));
-		counts.foreach(city -> System.out.println(city));
-		
-		return finalList;
+		return counts.toString();
 	}
 	
 	/**
