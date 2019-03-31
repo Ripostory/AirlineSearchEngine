@@ -8,6 +8,9 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
+import com.google.gson.Gson;
+
+import ripostory.flight.domain.Country;
 import scala.Tuple2;
 
 /**
@@ -44,7 +47,11 @@ public class Aggregation {
                 //Find max
                 .reduce((c1, c2) -> {if (c1._2 < c2._2) return c2; else return c1;});
 		
-		return counts.toString();
+		//fill objects and serialize
+		Country topCountry = new Country(counts._1, counts._2.toString());
+		Gson gson = new Gson();
+		
+		return gson.toJson(topCountry);
 	}
 	
 	/**
