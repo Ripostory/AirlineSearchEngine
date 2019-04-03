@@ -28,6 +28,11 @@ public class Aggregation {
 		context = con;
 	}
 	
+	/**
+	 * Gets the largest number of airports by country. Implements the second aggragation
+	 * job
+	 * @return Country and airport count
+	 */
 	public String highestAirportCount() {
 		//retrieve airport data
 		JavaRDD<String> rawAirData = new Data(context).retrieveData(DataType.airport);
@@ -48,10 +53,20 @@ public class Aggregation {
                 .reduce((c1, c2) -> {if (c1._2 < c2._2) return c2; else return c1;});
 		
 		//fill objects and serialize
-		Country topCountry = new Country(counts._1, counts._2.toString());
+		Country topCountry = new Country(counts._1, counts._2);
 		Gson gson = new Gson();
 		
 		return gson.toJson(topCountry);
+	}
+	
+	/**
+	 * 
+	 * @param cityCount how many cities to display
+	 * @param isIncoming sort by either incoming or outgoing TODO finish
+	 * @return
+	 */
+	public String flightsByCity(int cityCount, boolean isIncoming) {
+		return "";
 	}
 	
 	/**
