@@ -20,6 +20,12 @@ public class Main {
  
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 		
+		Search test = new Search(context);
+		test.airportsInCountry("France");
+		test.airlinesWithXStops(1);
+		test.airlinesWithCodeShare();
+		test.activeAirlinesInCountry("France");
+		
 		String airports = new Aggregation(context).highestAirportCount();
 		System.out.println(airports);
 		
