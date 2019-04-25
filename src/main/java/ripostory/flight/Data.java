@@ -21,7 +21,7 @@ enum DataType {
 
 public class Data {
 	private boolean prod = false;
-	private String hdfs = "hdfs:///tmp/";
+	private String hdfs = "s3://aviation-backend/data/";
 	private String local = "src/main/resources/";
 	private JavaSparkContext context = null;
 	
