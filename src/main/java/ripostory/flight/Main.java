@@ -1,4 +1,5 @@
 package ripostory.flight;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,15 +22,30 @@ public class Main {
 		JavaSparkContext context = new JavaSparkContext(sparkConf);
 		
 		Search test = new Search(context);
-		test.airportsInCountry("France");
-		test.airlinesWithXStops(1);
-		test.airlinesWithCodeShare();
-		test.activeAirlinesInCountry("France");
+		
+		ArrayList<String> airportsJsonArrLst = test.airportsInCountry("France");
+		for(String s : airportsJsonArrLst) {
+			System.out.println(s);
+		}
+				
+		ArrayList<String> airlinesStopsJsonArrLst = test.airlinesWithXStops(1);
+		for(String s : airlinesStopsJsonArrLst) {
+			System.out.println(s);
+		}
+				
+		ArrayList<String> airlinesCodeShareJsonArrLst = test.airlinesWithCodeShare();
+		for(String s : airlinesCodeShareJsonArrLst) {
+			System.out.println(s);
+		}
+				
+		ArrayList<String> airlinesCountryJsonArrLst = test.activeAirlinesInCountry("France");
+		for(String s : airlinesCountryJsonArrLst) {
+			System.out.println(s);
+		}
 		
 		String airports = new Aggregation(context).highestAirportCount();
 		System.out.println(airports);
 		
 		context.close();
- 
 	}
 }
